@@ -7,22 +7,44 @@ import {TodoFormScreen} from './app/screens/todo-form/TodoFormScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FinishedTodosScreen from './app/screens/finished-todos/FinishedTodosScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import i18next from 'i18next';
+import {TRANSLATIONS_EN} from './app/translations/en/translations';
+import {TRANSLATIONS_NL} from './app/translations/nl/translations';
+import {initReactI18next, useTranslation} from 'react-i18next';
+import {LanguageToggle} from './app/shared/components/LanguageToggle';
+
+i18next.use(initReactI18next).init({
+  // lng: 'en',
+  compatibilityJSON: 'v3',
+  resources: {
+    en: {
+      translation: TRANSLATIONS_EN,
+    },
+    nl: {
+      translation: TRANSLATIONS_NL,
+    },
+  },
+});
+
+i18next.changeLanguage('en');
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const queryClient = new QueryClient();
 
-function Home() {
+const Home = () => {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Todos"
         options={{
-          title: 'Active Todos',
+          title: t('activeTodos'),
           tabBarLabelStyle: {
             fontSize: 15,
           },
+          headerRight: () => <LanguageToggle />,
           tabBarIcon: tabInfo => (
             <Icon
               name="list"
@@ -36,10 +58,11 @@ function Home() {
       <Tab.Screen
         name="FinishedTodos"
         options={{
-          title: 'Finished Todos',
+          title: t('finishedTodos'),
           tabBarLabelStyle: {
             fontSize: 15,
           },
+          headerRight: () => <LanguageToggle />,
           tabBarIcon: tabInfo => (
             <Icon
               name="check"
@@ -52,9 +75,10 @@ function Home() {
       />
     </Tab.Navigator>
   );
-}
+};
 
 const App = () => {
+  const {t} = useTranslation();
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
@@ -66,7 +90,7 @@ const App = () => {
           />
           <Stack.Screen
             name="SaveTodo"
-            options={{title: 'Save Todo'}}
+            options={{title: t('saveTodo')}}
             component={TodoFormScreen}
           />
         </Stack.Navigator>

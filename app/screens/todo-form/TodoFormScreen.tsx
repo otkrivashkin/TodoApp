@@ -12,11 +12,13 @@ import {
 import {useMutation, useQueryClient} from 'react-query';
 import {postTodo, putTodo} from '../todos/TodoApi';
 import uuid from 'react-native-uuid';
+import {useTranslation} from 'react-i18next';
 
 // @ts-ignore
 Animated.Text.propTypes = Animated.Text.propTypes || Text.propTypes;
 
 export const TodoFormScreen = ({navigation, route}) => {
+  const {t} = useTranslation();
   LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   let saveTodo = postTodo;
   let newTodo = {id: null, title: null};
@@ -62,11 +64,11 @@ export const TodoFormScreen = ({navigation, route}) => {
         {props => {
           return (
             <InputsContainer>
-              <FormikInput label="Title" name="title" type="text" />
+              <FormikInput label={t('title')} name="title" type="text" />
               <Button
                 onPress={props.handleSubmit}
                 disabled={!props.isValid}
-                title="SUBMIT"
+                title={t('submit')}
               />
             </InputsContainer>
           );
