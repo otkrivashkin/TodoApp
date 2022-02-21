@@ -10,17 +10,27 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "formik": "^2.2.9",
     "react": "17.0.2",
     "react-native": "0.67.2",
+    "react-native-formik": "^1.7.8",
+    "react-native-material-textfield": "^0.16.1",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.12.0",
-    "react-query": "^3.34.15"
+    "react-native-uuid": "^2.0.1",
+    "react-native-vector-icons": "^9.1.0",
+    "react-query": "^3.34.15",
+    "recompose": "^0.30.0",
+    "twrnc": "^3.0.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
+    "@faker-js/faker": "^6.0.0-alpha.6",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
