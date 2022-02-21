@@ -37,7 +37,7 @@ export const TodoItem: React.FC<{
           <Pressable
             onPress={() => onPressDeleteTodoItem(todo)}
             style={tw`ml-3`}>
-            <Icon name="trash" size={20} />
+            <Icon name="check" size={20} />
           </Pressable>
         </View>
       )}
